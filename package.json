@@ -1,0 +1,15 @@
+{
+  "name": "imperative-shell-functional-core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "fastify": "^5.4.0"
+  }
+}
