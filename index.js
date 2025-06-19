@@ -1,4 +1,6 @@
-const fastify = require('./shell/server.js')
+'use strict';
+
+const fastify = require('./shell/routes.js');
 
 const main = async () => {
   try {

@@ -1,17 +1,29 @@
-const Fastify = require('fastify');
-const { readTodos, saveTodos } = require('./todo-storage.js');
-const { createTodo, filterTodos, toggleTodo, deleteTodo } = require('../core/todo-operations.js');
+'use strict';
 
-const fastify = Fastify({
+const fastifyModule = require('fastify');
+const { readTodos, saveTodos } = require('./todo-storage.js');
+const {
+  createTodo,
+  filterTodos,
+  toggleTodo,
+  deleteTodo,
+} = require('../core/todo-operations.js');
+
+const fastify = fastifyModule({
   logger: true,
 });
 
 fastify.get('/todos', async (request, reply) => {
   const todos = await readTodos();
+  const searchParams = request.query;
+  const completed = ['true', 'false'].includes(searchParams.completed)
+    ? searchParams.completed === 'true'
+    : undefined;
+
   const filters = {
-    title: request.query.title,
-    completed: request.query.completed
-  }
+    title: searchParams.title,
+    completed,
+  };
 
   const result = filterTodos(todos, filters);
   reply.send(result);

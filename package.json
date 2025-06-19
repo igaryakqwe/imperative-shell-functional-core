@@ -11,5 +11,9 @@
   "description": "",
   "dependencies": {
     "fastify": "^5.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.29.0",
+    "eslint-config-metarhia": "^9.1.2"
   }
 }
